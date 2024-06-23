@@ -479,7 +479,7 @@ void GetMissingVsExistingFiles(const TArray<FString>& InFiles, TArray<FString>& 
 	const TArray<FString> Files = (InFiles.Num() > 0) ? (InFiles) : (Provider.GetFilesInCache());
 
 	TArray<TSharedRef<ISourceControlState, ESPMode::ThreadSafe>> LocalStates;
-	Provider.GetState(Files, LocalStates, EStateCacheUsage::Use);
+	Provider.GetState(Files, LocalStates, EStateCacheUsage::ForceUpdate);
 	for (const auto& State : LocalStates)
 	{
 		if (FPaths::FileExists(State->GetFilename()))
